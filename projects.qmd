@@ -3,7 +3,7 @@ title: "Behavioral Science with oTree"
 format:
     html:
         theme: default
-        output-file: "projects.html"
+        output-file: "index.html"
         toc: true
         toc-depth: 1
         toc-title: "Projects"
