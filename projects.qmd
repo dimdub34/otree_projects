@@ -1,0 +1,322 @@
+---
+title: "Behavioral Science with oTree"
+format:
+    html:
+        theme: default
+        output-file: "projects.html"
+        toc: true
+        toc-depth: 1
+        toc-title: "Projects"
+        toc-location: left
+        embed-resources: true
+---
+
+::: {.alert .alert-info}
+Choose one project from the list below. In a team of 2-3 people, you will design and implement a behavioral experiment using oTree, simulating data, analyzing results, and presenting your findings.
+:::
+
+**Each project must include:**
+
+1. **A functional oTree implementation:** The app must run without errors and include randomized treatments.
+2. **Data Simulation:** A comprehensive `tests.py` file to simulate user behavior (bots) and verify data integrity.
+3. **Data Analysis:** A simple analysis of the simulated data (using R or Python).
+4. **Oral Presentation:** A 15-20 minute pitch and demo.
+
+**Presentation Structure:**
+
+* **Pitch (5 min):** Context, client's problem, behavioral hypothesis, and proposed solution.
+* **Demo (10 min):** Live demonstration of the oTree experiment (involving the class via smartphones/PCs).
+* **Analysis (5 min):** Basic visualization of simulated results and expected outcomes.
+
+---
+
+# 1. The Power of Scarcity 
+
+**Context:**
+An e-commerce website wants to investigate how scarcity cues influence consumer behavior. They suspect that highlighting limited availability or high demand increases the likelihood of purchase.
+
+**Research Question:**
+Does the type of scarcity message (quantitative vs. social) affect the click-through rate (CTR) or purchase probability?
+
+**Experimental Design:**
+Create a product selection task where participants view items under different conditions:
+
+**Example** :
+
+- **Treatment A (Control):** Neutral product display (no messages).
+- **Treatment B (Quantitative Scarcity):** Message indicating low stock (e.g., "Only 2 items left!").
+- **Treatment C (Social Scarcity):** Message indicating high interest (e.g., "10 people are viewing this item right now").
+
+
+---
+
+# 2. Framing Effects on Subscriptions 
+
+**Context:**
+A streaming platform wants to optimize its subscription page. They need to understand how the presentation of pricing options (framing) alters user choices between monthly and yearly plans.
+
+**Research Question:**
+How does framing the cost (e.g., emphasizing savings vs. flexibility) impact the uptake of long-term subscriptions?
+
+**Experimental Design:**
+Design a subscription choice interface with randomized framing:
+
+**Example**: 
+
+- **Treatment A (Baseline):** Standard presentation (e.g., "$10/month" vs. "$100/year").
+- **Treatment B (Loss Aversion/Gain):** Emphasize savings (e.g., "Yearly plan: Get 2 months free").
+- **Treatment C (Flexibility):** Emphasize freedom (e.g., "Monthly plan: Cancel anytime, total flexibility").
+
+---
+
+# 3. Social vs. Algorithmic Recommendations 
+
+**Context:**
+An online clothing retailer is debating its recommendation strategy. They want to know if customers trust peer choices (social proof) more than algorithmic curation.
+
+**Research Question:**
+Do users prefer products recommended by "other customers" or products "selected for them" by an algorithm?
+
+**Experimental Design:**
+Create a simulated shopping environment where products are highlighted based on the condition:
+
+**Example**:
+
+- **Treatment A (Social):** Recommendations labeled as "Most purchased by others."
+- **Treatment B (Algorithmic):** Recommendations labeled as "Selected for you by our AI."
+
+**Deliverables:**
+
+- Fictional product selection interface.
+- Click-stream data collection.
+- Behavioral analysis comparing the click-through rate of recommended items in both conditions.
+
+---
+
+# 4. The Influencer Trust Test 
+
+**Context:**
+A brand wants to measure the "Influencer Effect." They need to determine if a product is perceived more favorably when endorsed by a social media personality compared to a standard neutral presentation.
+
+**Research Question:**
+Does an influencer endorsement significantly increase trust or purchase intention compared to a neutral product description?
+
+**Experimental Design:**
+Participants view a product profile under one of two conditions.
+
+**Example**:
+
+- **Treatment A (Neutral):** Standard technical datasheet and product photo.
+- **Treatment B (Influencer):** An Instagram-style post featuring an influencer with a photo and a descriptive caption.
+
+**Deliverables:**
+
+- Randomization between conditions.
+- Measurement of "Trust Score" (Likert scale) or "Willingness to Buy" (0-100 slider).
+- Comparative analysis of the scores.
+
+---
+
+# 5. The Decoy Effect
+
+**Context:**
+An online retailer wants to nudge users toward their Premium (higher margin) product. They are considering introducing a "decoy" option to make the Premium option look more attractive.
+
+**Research Question:**
+Does the introduction of an irrelevant "decoy" option (asymmetrically dominated) increase the share of participants choosing the Premium option?
+
+**Experimental Design:**
+Participants choose a product in one of two conditions.
+
+**Example**:
+
+- **Treatment A (No Decoy):** Choice between **Basic** ($10) and **Premium** ($30).
+- **Treatment B (With Decoy):** Choice between **Basic** ($10), **Premium** ($30), and **Decoy** ($35, or $30 with fewer features) — *The decoy is clearly worse than the Premium option.*
+
+**Deliverables:**
+
+- oTree implementation of the choice task.
+- Data collection of the chosen product.
+- Analysis of the shift in "Premium" market share between Treatment A and B.
+
+---
+
+# 6. The "Green Nudge"
+
+**Context:**
+An online supermarket aims to reduce plastic waste. They want to encourage customers to buy bulk products (packaging-free) instead of pre-packaged goods using behavioral nudges.
+
+**Research Question:**
+Is social pressure (Social Norm) or environmental impact information (Ecological signaling) more effective in promoting bulk purchases?
+
+**Experimental Design:**
+Participants have a budget of €20 to spend in a simulated store.
+
+**Example**:
+
+- **Treatment A (Control):** Neutral display.
+- **Treatment B (Social Norm):** Bulk products display a badge: "80% of our customers choose this product."
+- **Treatment C (Impact):** Bulk products display a badge: "Save 50g of plastic by choosing this."
+
+**Deliverables:**
+
+- A shopping list task implementation.
+- Calculation of the percentage of "bulk" items in the final basket.
+- Analysis comparing the effectiveness of the two nudges against the control.
+
+---
+
+# 7. Incentives and Productivity
+
+**Context:**
+A gig-economy food delivery platform wants to increase courier activity during peak hours. They are hesitating between a guaranteed fixed bonus and a lottery-based bonus.
+
+**Research Question:**
+Which incentive scheme generates higher effort (productivity): a small fixed piece-rate or a probabilistic large reward (with the same expected value)?
+
+**Experimental Design:**
+Implement a **Real Effort Task** (e.g., counting zeros in a matrix, decoding text) lasting exactly 2 minutes.
+
+**Example**:
+
+- **Treatment A (Fixed):** "You earn €0.50 per correctly solved task."
+- **Treatment B (Lottery):** "Every correctly solved task gives you a 1 in 10 chance to win €5.00."
+
+**Deliverables:**
+
+- Real Effort Task logic (looping pages until timeout).
+- Payoff calculation logic based on the treatment.
+- Analysis of effort (number of tasks attempted/solved) and risk preferences.
+
+---
+
+# 8. Dishonesty and Declarations
+
+**Context:**
+A car insurance company is losing money due to inflated claims. They want to test if the *timing* of an honesty pledge (signature) affects the magnitude of fraud.
+
+**Research Question:**
+Does signing an honesty pledge *before* reporting a claim reduce dishonesty more than signing it *after*?
+
+**Experimental Design:**
+Adapt the standard **"Die-roll task"**: Participants roll a die (physically or virtually) and report the result. Higher numbers equal higher payoffs.
+
+**Example**:
+
+- **Treatment A (Post-signature):** Participant enters the result, then signs a statement at the bottom ("I certify this is accurate...").
+- **Treatment B (Pre-signature/Priming):** Participant must sign the honesty pledge *before* the input field for the result appears.
+
+**Deliverables:**
+
+- Implementation of the reporting interface.
+- Comparison of the distribution of reported numbers against the statistical probability (uniform distribution).
+- Analysis of "cheating magnitude" between conditions.
+
+---
+
+# 9. The Dutch Auction (Flash Sale)
+
+**Context:**
+A last-minute concert ticket resale platform wants to test if buyers panic and pay a higher premium during a descending-price auction compared to a standard fixed-price format.
+
+**Research Question:**
+Does a descending-price clock (Dutch Auction) increase the final sale price due to anticipated competition and panic, compared to static pricing?
+
+**Experimental Design:**
+Create a real-time market for a single indivisible good among a group of competing buyers.
+
+- **Treatment A (Fixed Price):** Buyers can buy the ticket at a static price at any time.
+- **Treatment B (Dutch Auction):** The price starts at €100 and drops by €1 every second. The first player to click "Buy" wins the item at the current price. The others earn nothing.
+
+**Deliverables:**
+
+- Server-side timer and `live_method` to broadcast the decreasing price.
+- Dynamic visualization of the price drop (e.g., using Highcharts).
+- Data analysis: Distribution of winning bids based on the number of competitors.
+
+---
+
+# 10. "All or Nothing" Crowdfunding
+
+**Context:**
+A crowdfunding startup (like Kickstarter) wants to study the momentum effect of donations. They hypothesize that people donate more frequently and generously as the campaign approaches its funding threshold.
+
+**Research Question:**
+Does the probability and amount of donations increase exponentially as the collective pool gets closer to the required threshold?
+
+**Experimental Design:**
+Players are endowed with tokens and have 60 seconds to make continuous, free-will donations to a public project.
+
+**Rules:** If the total threshold (e.g., 200 tokens) is reached before the timeout, the project is funded and yields a multiplier return to all. If not, everyone is refunded.
+
+**Deliverables:**
+
+- `live_method` to aggregate donations and broadcast the new total instantly.
+- A live Bootstrap Progress Bar updating dynamically.
+- `ExtraModel` to record the exact timestamp and amount of *every single donation*.
+- Data analysis: Plotting the cumulative donation curve over time to identify end-game momentum.
+
+---
+
+# 11. The Ranking Effect
+
+**Context:**
+A large logistics company wants to know if displaying a live "Best Employee Leaderboard" increases overall productivity or discourages lower-performing workers.
+
+**Research Question:**
+Does real-time relative performance feedback (ranking) increase total effort, or does it cause the lowest-ranked participants to give up?
+
+**Experimental Design:**
+A Real-Effort Task (e.g., solving math matrices) where players earn piece-rate points.
+
+- **Treatment A (Control):** Players only see their own score.
+- **Treatment B (Leaderboard):** Players see a dynamically sorted Top 3 ranking of their group updated live on their screen.
+
+**Deliverables:**
+
+- Server-side validation of answers via `live_method`.
+- Dynamic DOM manipulation in JavaScript to re-sort the HTML leaderboard without reloading the page.
+- Data analysis: Time-series analysis of the effort of the "last-placed" player compared to the control group.
+
+---
+
+# 12. Information Cascade
+
+**Context:**
+An algorithmic investment fund wants to model the formation of speculative bubbles based on mimicry, even when economic fundamentals are weak.
+
+**Research Question:**
+How often do individuals ignore their own private information to follow the observed decisions of the majority (herd behavior)?
+
+**Experimental Design:**
+Two urns exist (A: 70% Red balls, B: 70% Blue balls). The computer secretly picks one. 
+
+- **Sequential Gameplay:** Each player receives a private signal (one ball drawn) and must publicly guess the chosen urn *one after the other*.
+- Players waiting their turn watch the decisions of their predecessors appear live on their screen.
+
+**Deliverables:**
+
+- Use of `get_players()` to manage sequential turns within a group.
+- `live_method` broadcasting the decision of player $N$ to players $N+1$, $N+2$, etc.
+- Data analysis: Calculating the percentage of players who enter an "information cascade" (choosing contrary to their private signal).
+
+---
+
+# 13. Bilateral Negotiation with a Deadline
+
+**Context:**
+A labor union wants to investigate the "Ultimatum Effect"—the tendency for negotiations to stall until the final seconds before a strike deadline.
+
+**Research Question:**
+Does the rate of concessions (price compromises) accelerate exponentially in the final 15 seconds of a negotiation window?
+
+**Experimental Design:**
+A 1-on-1 over-the-counter market (1 Buyer, 1 Seller). They have 2 minutes to agree on a transaction price.
+- They can submit and revise offers continuously.
+- To close the deal, one player must explicitly click "Accept" on the other's current offer. If the timer hits zero with no accepted offer, both earn nothing.
+
+**Deliverables:**
+
+- Custom chat/offer interface relying entirely on `live_method` and `liveRecv`.
+- Logic to instantly end the page and calculate payoffs as soon as an offer is mutually accepted.
+- Data analysis: Measuring the average concession amount (difference between consecutive offers) over time.
