@@ -17,16 +17,30 @@ Choose one project from the list below. In a team of 2-3 people, you will design
 
 **Each project must include:**
 
-1. **A functional oTree implementation:** The app must run without errors and include randomized treatments.
-2. **Data Simulation:** A comprehensive `tests.py` file to simulate user behavior (bots) and verify data integrity.
-3. **Data Analysis:** A simple analysis of the simulated data (using R or Python).
-4. **Oral Presentation:** A 15-20 minute pitch and demo.
+1. **A functional oTree implementation:**
+   - The app must run without errors and implement cleanly randomized experimental treatments.
+   - **Control Questionnaire(s):** You must include one or more survey modules to control for individual heterogeneity:
+     - *Socio-demographic characteristics:* age, gender, education level, occupation / socio-professional category, etc.
+     - *Behavioral & psychological traits:* risk attitudes, time preferences (patience / discounting), social preferences (trust, fairness, altruism), or environmental preferences (e.g., NEP scale), depending on your project's research question.
+2. **Data Simulation:**
+   - A comprehensive `tests.py` file to simulate user behavior (bots) and verify data integrity across all experimental branches.
+   - **Inject Realistic Treatment Effects:** Rather than purely uniform random inputs (e.g., 50/50 everywhere), you are strongly recommended to program bots with differentiated behaviors across treatments (e.g., using `random.choices(['option_A', 'option_B'], weights=[0.8, 0.2])[0]` in the treatment condition vs. `[0.5, 0.5]` in the control). This ensures your synthetic dataset contains meaningful patterns and treatment effects to discuss during the analysis.
+3. **Data Analysis:** An econometric/statistical analysis of the simulated data (using Python or R), estimating treatment effects while controlling for respondent characteristics.
+4. **Oral Presentation:** A 20 minute pitch and demo.
 
 **Presentation Structure:**
 
 * **Pitch (5 min):** Context, client's problem, behavioral hypothesis, and proposed solution.
 * **Demo (10 min):** Live demonstration of the oTree experiment (involving the class via smartphones/PCs).
 * **Analysis (5 min):** Basic visualization of simulated results and expected outcomes.
+
+**Deliverables to Submit:**
+
+Each team must submit a single **ZIP archive** containing:
+
+1. **The complete oTree project folder:** including your custom app(s), templates, assets, and `tests.py`.
+2. **The presentation slides:** in PDF, PowerPoint, or HTML format.
+3. **The data analysis notebook:** a Jupyter Notebook (`.ipynb`) or R script / Quarto / R Markdown notebook used to clean, visualize, and statistically analyze the simulated dataset.
 
 ---
 
@@ -85,12 +99,6 @@ Create a simulated shopping environment where products are highlighted based on 
 - **Treatment A (Social):** Recommendations labeled as "Most purchased by others."
 - **Treatment B (Algorithmic):** Recommendations labeled as "Selected for you by our AI."
 
-**Deliverables:**
-
-- Fictional product selection interface.
-- Click-stream data collection.
-- Behavioral analysis comparing the click-through rate of recommended items in both conditions.
-
 ---
 
 # 4. The Influencer Trust Test 
@@ -109,12 +117,6 @@ Participants view a product profile under one of two conditions.
 - **Treatment A (Neutral):** Standard technical datasheet and product photo.
 - **Treatment B (Influencer):** An Instagram-style post featuring an influencer with a photo and a descriptive caption.
 
-**Deliverables:**
-
-- Randomization between conditions.
-- Measurement of "Trust Score" (Likert scale) or "Willingness to Buy" (0-100 slider).
-- Comparative analysis of the scores.
-
 ---
 
 # 5. The Decoy Effect
@@ -132,12 +134,6 @@ Participants choose a product in one of two conditions.
 
 - **Treatment A (No Decoy):** Choice between **Basic** ($10) and **Premium** ($30).
 - **Treatment B (With Decoy):** Choice between **Basic** ($10), **Premium** ($30), and **Decoy** ($35, or $30 with fewer features) — *The decoy is clearly worse than the Premium option.*
-
-**Deliverables:**
-
-- oTree implementation of the choice task.
-- Data collection of the chosen product.
-- Analysis of the shift in "Premium" market share between Treatment A and B.
 
 ---
 
@@ -158,12 +154,6 @@ Participants have a budget of €20 to spend in a simulated store.
 - **Treatment B (Social Norm):** Bulk products display a badge: "80% of our customers choose this product."
 - **Treatment C (Impact):** Bulk products display a badge: "Save 50g of plastic by choosing this."
 
-**Deliverables:**
-
-- A shopping list task implementation.
-- Calculation of the percentage of "bulk" items in the final basket.
-- Analysis comparing the effectiveness of the two nudges against the control.
-
 ---
 
 # 7. Incentives and Productivity
@@ -181,12 +171,6 @@ Implement a **Real Effort Task** (e.g., counting zeros in a matrix, decoding tex
 
 - **Treatment A (Fixed):** "You earn €0.50 per correctly solved task."
 - **Treatment B (Lottery):** "Every correctly solved task gives you a 1 in 10 chance to win €5.00."
-
-**Deliverables:**
-
-- Real Effort Task logic (looping pages until timeout).
-- Payoff calculation logic based on the treatment.
-- Analysis of effort (number of tasks attempted/solved) and risk preferences.
 
 ---
 
@@ -206,117 +190,95 @@ Adapt the standard **"Die-roll task"**: Participants roll a die (physically or v
 - **Treatment A (Post-signature):** Participant enters the result, then signs a statement at the bottom ("I certify this is accurate...").
 - **Treatment B (Pre-signature/Priming):** Participant must sign the honesty pledge *before* the input field for the result appears.
 
-**Deliverables:**
+---
 
-- Implementation of the reporting interface.
-- Comparison of the distribution of reported numbers against the statistical probability (uniform distribution).
-- Analysis of "cheating magnitude" between conditions.
+# 9. Modal Shift and Carbon Taxation
+
+**Context:**
+A metropolitan transport authority wants to accelerate modal shift from private combustion cars to public transit and active mobility for suburban commuters. They are hesitating between a coercive carbon tax on fuel and a positive financial incentive ("Mobility Bonus").
+
+**Research Question:**
+Which policy framing is more effective at driving commuters away from private cars: a financial loss (carbon tax penalty) or an equivalent financial gain (green mobility bonus)?
+
+**Experimental Design:**
+A vignette-based choice task presenting participants with commute scenarios between private car and public transit:
+
+**Example**:
+
+- **Treatment A (Control):** Standard commute costs and travel times.
+- **Treatment B (Loss / Carbon Penalty):** Car fuel price explicitly includes a €30/month "Carbon Pollution Surcharge".
+- **Treatment C (Gain / Green Bonus):** Public transit option includes a €30/month "Clean Mobility Pass Voucher".
 
 ---
 
-# 9. The Dutch Auction (Flash Sale)
+# 10. Peak Electricity Demand & Blackout Prevention
 
 **Context:**
-A last-minute concert ticket resale platform wants to test if buyers panic and pay a higher premium during a descending-price auction compared to a standard fixed-price format.
+A national electricity grid operator and energy supplier faces severe grid stress during winter evening peaks (6 PM – 8 PM). They want to encourage residential consumers to voluntarily postpone energy-intensive appliances (washing machines, EV charging, electric heating).
 
 **Research Question:**
-Does a descending-price clock (Dutch Auction) increase the final sale price due to anticipated competition and panic, compared to static pricing?
+Which behavioral nudge achieves the highest willingness to shift electricity consumption: private financial savings, local social norms, or the fear of a collective blackout?
 
 **Experimental Design:**
-Create a real-time market for a single indivisible good among a group of competing buyers.
+Participants face an evening peak alert scenario and must declare their commitment to delay using high-consumption devices:
 
-- **Treatment A (Fixed Price):** Buyers can buy the ticket at a static price at any time.
-- **Treatment B (Dutch Auction):** The price starts at €100 and drops by €1 every second. The first player to click "Buy" wins the item at the current price. The others earn nothing.
+**Example**:
 
-**Deliverables:**
-
-- Server-side timer and `live_method` to broadcast the decreasing price.
-- Dynamic visualization of the price drop (e.g., using Highcharts).
-- Data analysis: Distribution of winning bids based on the number of competitors.
+- **Treatment A (Financial Incentive):** "Save up to €5 on your bill by shifting your consumption tonight."
+- **Treatment B (Local Social Norm):** "78% of households in your neighborhood have already pledged to reduce their usage tonight."
+- **Treatment C (Collective Threat / Blackout Nudge):** "The regional grid is nearing overload. Act now to prevent rolling blackouts in your area."
 
 ---
 
-# 10. "All or Nothing" Crowdfunding
+# 11. AI-Assisted Medical Decisions
 
 **Context:**
-A crowdfunding startup (like Kickstarter) wants to study the momentum effect of donations. They hypothesize that people donate more frequently and generously as the campaign approaches its funding threshold.
+A healthcare mutual and hospital network is exploring AI diagnostic support tools for physicians. They need to understand whether patients trust medical recommendations when an AI algorithm is involved, and whether algorithm explainability mitigates algorithmic aversion.
 
 **Research Question:**
-Does the probability and amount of donations increase exponentially as the collective pool gets closer to the required threshold?
+Does the introduction of an AI co-pilot decrease patient adherence and trust compared to a human-only diagnosis, and can explainability (confidence scores and rationale) restore confidence?
 
 **Experimental Design:**
-Players are endowed with tokens and have 60 seconds to make continuous, free-will donations to a public project.
+Participants are presented with a clinical case vignette involving a moderately complex diagnosis and treatment plan:
 
-**Rules:** If the total threshold (e.g., 200 tokens) is reached before the timeout, the project is funded and yields a multiplier return to all. If not, everyone is refunded.
+**Example**:
 
-**Deliverables:**
-
-- `live_method` to aggregate donations and broadcast the new total instantly.
-- A live Bootstrap Progress Bar updating dynamically.
-- `ExtraModel` to record the exact timestamp and amount of *every single donation*.
-- Data analysis: Plotting the cumulative donation curve over time to identify end-game momentum.
+- **Treatment A (Human-Only):** The diagnosis and prescription are formulated by the attending physician alone.
+- **Treatment B (Black-Box AI Co-pilot):** The physician states that the diagnosis was recommended by an automated AI diagnostic algorithm.
+- **Treatment C (Explainable AI Co-pilot):** The physician uses an AI tool providing explicit rationale ("AI recommendation based on 3 clinical biomarkers with a 94% confidence score").
 
 ---
 
-# 11. The Ranking Effect
+# 12. Sustainable Investing: Return vs. Greenwashing
 
 **Context:**
-A large logistics company wants to know if displaying a live "Best Employee Leaderboard" increases overall productivity or discourages lower-performing workers.
+A digital investment platform (robo-advisor) wants to attract retail investors to ESG and Climate transition funds. They suspect that retail investors are eager to invest sustainably, but are cynical about greenwashing and uncertain about giving up expected financial returns.
 
 **Research Question:**
-Does real-time relative performance feedback (ranking) increase total effort, or does it cause the lowest-ranked participants to give up?
+How much financial return are retail investors willing to sacrifice for certified green investments, and does an audited third-party label (e.g., Greenfin) overcome greenwashing skepticism compared to self-declared corporate claims?
 
 **Experimental Design:**
-A Real-Effort Task (e.g., solving math matrices) where players earn piece-rate points.
+Participants allocate an investment budget of €5,000 between two investment portfolios featuring randomized attributes:
 
-- **Treatment A (Control):** Players only see their own score.
-- **Treatment B (Leaderboard):** Players see a dynamically sorted Top 3 ranking of their group updated live on their screen.
+**Example**:
 
-**Deliverables:**
-
-- Server-side validation of answers via `live_method`.
-- Dynamic DOM manipulation in JavaScript to re-sort the HTML leaderboard without reloading the page.
-- Data analysis: Time-series analysis of the effort of the "last-placed" player compared to the control group.
+- **Attributes varied:** Expected annual return (2% to 8%), Capital risk (Low, Medium, High), and Environmental impact certification (No green claim, Self-declared "Eco-friendly" by the fund, or Audited Government Green Label).
+- Participants make 3 to 5 discrete choices between competing funds.
 
 ---
 
-# 12. Information Cascade
+# 13. Remote Work, Digital Surveillance & Job Attractiveness
 
 **Context:**
-An algorithmic investment fund wants to model the formation of speculative bubbles based on mimicry, even when economic fundamentals are weak.
+A talent acquisition firm is advising tech and service companies on remote work policies. Companies want to offer flexible hybrid arrangements (2–3 days of telework) but some management teams insist on deploying digital activity tracking software (keystroke logging, webcam check-ins).
 
 **Research Question:**
-How often do individuals ignore their own private information to follow the observed decisions of the majority (herd behavior)?
+What wage premium or concession do job applicants associate with telework flexibility, and does intrusive digital monitoring completely offset the perceived utility of remote work?
 
 **Experimental Design:**
-Two urns exist (A: 70% Red balls, B: 70% Blue balls). The computer secretly picks one. 
+Participants evaluate and rate several job offers in their field via a vignette rating / choice task:
 
-- **Sequential Gameplay:** Each player receives a private signal (one ball drawn) and must publicly guess the chosen urn *one after the other*.
-- Players waiting their turn watch the decisions of their predecessors appear live on their screen.
+**Example**:
 
-**Deliverables:**
+- **Attributes varied:** Base monthly salary, Telework policy (0 days, 2 days, 4 days per week), and Management & monitoring policy (Autonomous goal-based evaluation vs. Continuous background digital surveillance software).
 
-- Use of `get_players()` to manage sequential turns within a group.
-- `live_method` broadcasting the decision of player $N$ to players $N+1$, $N+2$, etc.
-- Data analysis: Calculating the percentage of players who enter an "information cascade" (choosing contrary to their private signal).
-
----
-
-# 13. Bilateral Negotiation with a Deadline
-
-**Context:**
-A labor union wants to investigate the "Ultimatum Effect"—the tendency for negotiations to stall until the final seconds before a strike deadline.
-
-**Research Question:**
-Does the rate of concessions (price compromises) accelerate exponentially in the final 15 seconds of a negotiation window?
-
-**Experimental Design:**
-A 1-on-1 over-the-counter market (1 Buyer, 1 Seller). They have 2 minutes to agree on a transaction price.
-- They can submit and revise offers continuously.
-- To close the deal, one player must explicitly click "Accept" on the other's current offer. If the timer hits zero with no accepted offer, both earn nothing.
-
-**Deliverables:**
-
-- Custom chat/offer interface relying entirely on `live_method` and `liveRecv`.
-- Logic to instantly end the page and calculate payoffs as soon as an offer is mutually accepted.
-- Data analysis: Measuring the average concession amount (difference between consecutive offers) over time.

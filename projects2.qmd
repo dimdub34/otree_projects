@@ -1,0 +1,204 @@
+---
+title: "Behavioral Science with oTree"
+format:
+    html:
+        theme: default
+        toc: true
+        toc-depth: 1
+        toc-title: "Projects"
+        toc-location: left
+        embed-resources: true
+---
+
+::: {.alert .alert-info}
+Choose one project from the list below. In a team of 2-3 people, you will design and implement a behavioral experiment using oTree, simulating data, analyzing results, and presenting your findings.
+:::
+
+**Each project must include:**
+
+1. **A functional oTree implementation:**
+   - The app must run without errors and implement cleanly randomized experimental treatments.
+   - **Control Questionnaire(s):** You must include one or more survey modules to control for individual heterogeneity:
+     - *Socio-demographic characteristics:* age, gender, education level, occupation / socio-professional category, etc.
+     - *Behavioral & psychological traits:* risk attitudes, time preferences (patience / discounting), social preferences (trust, fairness, altruism), or environmental preferences (e.g., NEP scale), depending on your project's research question.
+2. **Data Simulation:**
+   - A comprehensive `tests.py` file to simulate user behavior (bots) and verify data integrity across all experimental branches.
+   - **Inject Realistic Treatment Effects:** Rather than purely uniform random inputs (e.g., 50/50 everywhere), you are strongly recommended to program bots with differentiated behaviors across treatments (e.g., using `random.choices(['option_A', 'option_B'], weights=[0.8, 0.2])[0]` in the treatment condition vs. `[0.5, 0.5]` in the control). This ensures your synthetic dataset contains meaningful patterns and treatment effects to discuss during the analysis.
+3. **Data Analysis:** An econometric/statistical analysis of the simulated data (using Python or R), estimating treatment effects while controlling for respondent characteristics.
+4. **Oral Presentation:** A 20 minute pitch and demo.
+
+**Presentation Structure:**
+
+* **Pitch (5 min):** Context, client's problem, behavioral hypothesis, and proposed solution.
+* **Demo (10 min):** Live demonstration of the oTree experiment (involving the class via smartphones/PCs).
+* **Analysis (5 min):** Basic visualization of simulated results and expected outcomes.
+
+**Deliverables to Submit:**
+
+Each team must submit a single **ZIP archive** containing:
+
+1. **The complete oTree project folder:** including your custom app(s), templates, assets, and `tests.py`.
+2. **The presentation slides:** in PDF, PowerPoint, or HTML format.
+3. **The data analysis notebook:** a Jupyter Notebook (`.ipynb`) or R script / Quarto / R Markdown notebook used to clean, visualize, and statistically analyze the simulated dataset.
+
+---
+
+# 1. The Dutch Auction (Flash Sale)
+
+**Context:**
+A last-minute concert ticket resale platform wants to test if buyers panic and pay a higher premium during a descending-price auction compared to a standard fixed-price format.
+
+**Research Question:**
+Does a descending-price clock (Dutch Auction) increase the final sale price due to anticipated competition and panic, compared to static pricing?
+
+**Experimental Design:**
+Create a real-time market for a single indivisible good among a group of competing buyers.
+
+- **Treatment A (Fixed Price):** Buyers can buy the ticket at a static price at any time.
+- **Treatment B (Dutch Auction):** The price starts at €100 and drops by €1 every second. The first player to click "Buy" wins the item at the current price. The others earn nothing.
+
+---
+
+# 2. "All or Nothing" Crowdfunding
+
+**Context:**
+A crowdfunding startup (like Kickstarter) wants to study the momentum effect of donations. They hypothesize that people donate more frequently and generously as the campaign approaches its funding threshold.
+
+**Research Question:**
+Does the probability and amount of donations increase exponentially as the collective pool gets closer to the required threshold?
+
+**Experimental Design:**
+Players are endowed with tokens and have 60 seconds to make continuous, free-will donations to a public project.
+
+**Rules:** If the total threshold (e.g., 200 tokens) is reached before the timeout, the project is funded and yields a multiplier return to all. If not, everyone is refunded.
+
+---
+
+# 3. The Ranking Effect
+
+**Context:**
+A large logistics company wants to know if displaying a live "Best Employee Leaderboard" increases overall productivity or discourages lower-performing workers.
+
+**Research Question:**
+Does real-time relative performance feedback (ranking) increase total effort, or does it cause the lowest-ranked participants to give up?
+
+**Experimental Design:**
+A Real-Effort Task where players earn piece-rate points.
+
+- **Treatment A (Control):** Players only see their own score.
+- **Treatment B (Leaderboard):** Players see a dynamically sorted Top 3 ranking of their group updated live on their screen.
+
+---
+
+# 4. Information Cascade
+
+**Context:**
+An algorithmic investment fund wants to model the formation of speculative bubbles based on mimicry, even when economic fundamentals are weak.
+
+**Research Question:**
+How often do individuals ignore their own private information to follow the observed decisions of the majority (herd behavior)?
+
+**Experimental Design:**
+Two urns exist (A: 70% Red balls, B: 70% Blue balls). The computer secretly picks one. 
+
+- **Sequential Gameplay:** Each player receives a private signal (one ball drawn) and must publicly guess the chosen urn *one after the other*.
+- Players waiting their turn watch the decisions of their predecessors appear live on their screen.
+
+---
+
+# 5. Bilateral Negotiation with a Deadline
+
+**Context:**
+A labor union wants to investigate the "Ultimatum Effect" – the tendency for negotiations to stall until the final seconds before a strike deadline.
+
+**Research Question:**
+Does the rate of concessions (price compromises) accelerate exponentially in the final 15 seconds of a negotiation window?
+
+**Experimental Design:**
+A 1-on-1 over-the-counter market (1 Buyer, 1 Seller). They have 2 minutes to agree on a transaction price.
+- They can submit and revise offers continuously.
+- To close the deal, one player must explicitly click "Accept" on the other's current offer. If the timer hits zero with no accepted offer, both earn nothing.
+
+---
+
+# 6. Real-Time Common-Pool Resource
+
+**Context:**
+A water basin or fisheries authority wants to study the overexploitation of renewable shared resources (the "Tragedy of the Commons").
+
+**Research Question:**
+Does providing a live visual gauge of the remaining resource stock encourage conservation, or does it trigger an accelerated panic-driven "race to the bottom"?
+
+**Experimental Design:**
+4 players share a common fish stock (100 units).
+- Every 2 seconds, the stock naturally regenerates by 5%.
+- Players can click an "Extract" button at any time during a 90-second window to catch fish (each fish = €0.20).
+- **Treatment A (Blind stock):** Players only see their own extraction count.
+- **Treatment B (Live stock gauge):** A dynamic progress bar displays the collective stock depleting and regenerating in real-time. If the stock hits 0, the fishery collapses and the round ends immediately with zero future gains.
+
+---
+
+# 7. Real-Time Bank Run
+
+**Context:**
+A central bank and financial stability regulator wants to analyze the micro-dynamics of self-fulfilling bank panics.
+
+**Research Question:**
+What is the critical threshold of observed early withdrawals that triggers an unstoppable cascade of withdrawals from an otherwise solvent institution?
+
+**Experimental Design:**
+Groups of 5 depositors each deposit €20 in a bank. If they leave their deposit until the end of the 60-second window, they earn a high interest return (€35).
+- Any depositor can click "Withdraw Now" at any time.
+- The bank has limited liquid reserves: it can pay the first 2 withdrawals in full (€20). Once reserves are exhausted, the bank fails: subsequent withdrawers and all remaining patient depositors receive €0.
+- A live feed displays each withdrawal event as it occurs.
+
+---
+
+# 8. Real-Time Price War (Bertrand Competition)
+
+**Context:**
+An e-commerce consultancy is investigating high-frequency algorithmic pricing and price-matching guarantees.
+
+**Research Question:**
+In a continuous real-time market, do competing sellers engage in aggressive undercutting down to marginal cost, or can tacit collusion emerge?
+
+**Experimental Design:**
+2 competing sellers have 60 seconds to sell identical products with a unit cost of €2.
+- Every second, automated buyers purchase 10 units from the cheapest seller. If prices are tied, sales are split 50/50.
+- Sellers can adjust their prices continuously with instant broadcasting of the competitor's posted price.
+- **Treatment A:** Instant, frictionless price revisions.
+- **Treatment B:** Price adjustment friction (a mandatory 3-second cooldown between consecutive price updates).
+
+---
+
+# 9. War of Attrition (Waiting Game for Market Entry)
+
+**Context:**
+An antitrust agency wants to examine how competing firms burn cash during standards wars or patent entry contests before one competitor concedes.
+
+**Research Question:**
+How do sunk costs and real-time waiting costs influence the timing of concession in a winner-take-all contest?
+
+**Experimental Design:**
+2 competing firms battle for a monopoly prize worth €40.
+- While both firms remain in the competition, a continuous timer ticks and drains €0.50 per second from each player's endowment.
+- The first player to click "Concede" stops their losses and receives €0. The remaining player immediately wins the monopoly prize minus their accumulated waiting costs.
+
+---
+
+# 10. Continuous Double Auction (Order Book & Market Depth)
+
+**Context:**
+A digital asset exchange is evaluating market transparency and liquidity rules.
+
+**Research Question:**
+Does displaying the full depth of the order book (all pending limit bids and asks) reduce the bid-ask spread and price volatility compared to an opaque market showing only the best bid/ask?
+
+**Experimental Design:**
+6 players (3 Buyers with differing private redemption values, 3 Sellers with differing unit production costs) trade units of an asset over 90 seconds.
+- Players post limit bids/asks and accept standing offers in real-time.
+- **Treatment A (Opaque):** Players only see the current best bid and best ask.
+- **Treatment B (Transparent Order Book):** Players see the entire live order book updating in real-time with all pending bids and asks.
+
+
+
